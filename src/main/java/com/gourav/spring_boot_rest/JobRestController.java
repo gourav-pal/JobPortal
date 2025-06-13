@@ -17,30 +17,41 @@ public class JobRestController {
     @Autowired
     private JobService service;
 
-    @GetMapping("JobPosts")
-    @ResponseBody
-    public List<JobPost> getAllJobs(){
-        return service.getAllJobs();
+    @GetMapping("jobPosts")
+    public List<JobPost> getAllJobs() {
+        return service.getAlljobs();
+
     }
 
-    @GetMapping("JobPost/{postId}")
-    public JobPost getJob(@PathVariable ("postId")int postId){
+    @GetMapping("/jobPost/{postId}")
+    public JobPost getJob(@PathVariable int postId) {
         return service.getJob(postId);
     }
 
-    @PostMapping("JobPost")
-    public void addJob(@RequestBody JobPost jobPost){
+
+    @PostMapping("jobPost")
+    public JobPost addJob(@RequestBody JobPost jobPost) {
         service.addJobs(jobPost);
+        return service.getJob(jobPost.getPostId());
     }
 
     @PutMapping("jobPost")
-    public List<JobPost> updatejob(@RequestBody JobPost jobPost){
-        service.upadtejob(jobPost);
-        return service.getAllJobs();
+    public JobPost updateJob(@RequestBody JobPost jobPost) {
+        service.updateJob(jobPost);
+        return service.getJob(jobPost.getPostId());
     }
 
-    @DeleteMapping("JobPost/{postId}")
-    public String deleteJob(@PathVariable int postId){
-        return service.deleteJob(postId);
+    @DeleteMapping("jobPost/{postId}")
+    public String deleteJob(@PathVariable int postId)
+    {
+        service.deleteJob(postId);
+        return "Deleted";
+    }
+
+
+    @GetMapping("load")
+    public String loadData() {
+        service.load();
+        return "success";
     }
 }
