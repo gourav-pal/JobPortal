@@ -26,7 +26,7 @@ const handleEdit = (id) => {
 
     useEffect(() => {
       const fetchPosts = async () => {
-        const response = await axios.get(`http://localhost:8080/jobPosts/keyword/${query}`);    
+        const response = await axios.get(`http://localhost:8080/jobPosts/Keyword/${query}`);    
         setPost(response.data);
       };
         const fetchInitialPosts = async () => {
