@@ -2,15 +2,17 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-# Copy everything
+# Copy all files
 COPY . .
 
-# ✅ Give permission to execute mvnw
+# Make Maven wrapper executable
 RUN chmod +x mvnw
 
-# ✅ Package the app
+# Package the Spring Boot app
 RUN ./mvnw clean package -DskipTests
 
+# Expose app port
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/*.jar"]
+# Run the app
+CMD ["java", "-jar", "target/spring-boot-rest-0.0.1-SNAPSHOT.jar"]
