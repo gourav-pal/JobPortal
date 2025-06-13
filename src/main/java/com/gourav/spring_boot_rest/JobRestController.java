@@ -3,6 +3,7 @@ package com.gourav.spring_boot_rest;
 import com.gourav.spring_boot_rest.model.JobPost;
 import com.gourav.spring_boot_rest.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,11 @@ public class JobRestController {
     public List<JobPost> getAllJobs() {
         return service.getAlljobs();
 
+    }
+
+    @GetMapping("jobPosts/Keyword/{keyword}")
+    public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword){
+            return service.search(keyword, keyword);
     }
 
     @GetMapping("/jobPost/{postId}")
