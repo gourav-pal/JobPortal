@@ -1,17 +1,16 @@
-# Use a lightweight JDK base image
-FROM eclipse-temurin:21-jdk-alpine
+FROM eclipse-temurin:21-jdk
 
-# Set the working directory
 WORKDIR /app
 
-# Copy project files
+# Copy everything
 COPY . .
 
-# Package the application
+# ✅ Give permission to execute mvnw
+RUN chmod +x mvnw
+
+# ✅ Package the app
 RUN ./mvnw clean package -DskipTests
 
-# Expose port (update if you use a different port)
 EXPOSE 8080
 
-# Run the JAR
-CMD ["java", "-jar", "target/spring-boot-rest-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/*.jar"]
