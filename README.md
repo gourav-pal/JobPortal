@@ -1,6 +1,6 @@
 # 🧑‍💼 Job Portal App
 
-A full-stack Job Portal platform that connects job seekers and employers. Built with **Java, Spring Boot**, and optional frontend stack (React/Angular), this application allows users to post jobs, apply for openings, manage applications, and streamline hiring processes.
+A full-stack Job Portal platform that connects job seekers and employers. Built with **Java, Spring Boot**, this application allows users to post jobs, apply for openings, manage applications, and streamline hiring processes.
 
 ---
 
